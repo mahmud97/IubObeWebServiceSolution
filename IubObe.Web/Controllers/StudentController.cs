@@ -14,83 +14,85 @@ namespace IubObe.Web.Controllers
     public class StudentController : Controller
     {
 
-		private MainDataContext db = new MainDataContext();
-		// GET: Student
-		public ActionResult StudentRegistration()
+        private MainDataContext db = new MainDataContext();
+        // GET: Student
+        public ActionResult StudentRegistration()
         {
             return View();
         }
 
 
-		[HttpPost]
-		[AllowAnonymous]
-		[ValidateAntiForgeryToken]
-		public ActionResult StudentRegistration(Student model,string button)
-		{
-			
-			string sendGridKey = CoreAppSettings.SendGridApiKey;
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult StudentRegistration(Student model, string button)
+        {
 
-			if (button == "Cancel")
-			{
+            string sendGridKey = CoreAppSettings.SendGridApiKey;
 
-				ModelState.Clear();
-				return View();
-
-			}
-			var emailExist = db.Students.Where(s => s.Email == model.Email).FirstOrDefault();
-            var studentExist = db.Students.Where(s => s.StudentId == model.StudentId).FirstOrDefault();
-			if (emailExist != null)
+            if (button == "Cancel")
             {
-                ModelState.AddModelError("error", "This email already exists");
+
+                ModelState.Clear();
+                return View();
+
+            }
+            var emailExist = db.Students.Where(s => s.Email == model.Email).FirstOrDefault();
+            var studentExist = db.Students.Where(s => s.StudentId == model.StudentId).FirstOrDefault();
+            if (studentExist != null)
+            {
+                ModelState.AddModelError("error1", "This Student Id already exists");
                 return View();
             }
-			if (studentExist != null)
-			{
-				ModelState.AddModelError("error", "This Student Id already exists");
-				return View();
-			}
 
-			if (ModelState.IsValid)
-			{
-				db.Students.Add(model);
-				db.SaveChanges();
-				SendMail(model, sendGridKey);
-				return RedirectToAction("Thanks", "Student");
-			}
+            if (emailExist != null)
+            {
+                ModelState.AddModelError("error2", "This email already exists");
+                return View();
+            }
+           
 
-			return View(model);
-		}
+            if (ModelState.IsValid)
+            {
+                db.Students.Add(model);
+                db.SaveChanges();
+                SendMail(model, sendGridKey);
+                return RedirectToAction("Thanks", "Student");
+            }
 
-		public ActionResult Thanks()
-		{
-			return View();
-		}
-		private void SendMail(Student model, string key)
-		{
-			try
-			{
-				var apikey = key;
-				var client = new SendGridClient(apikey);
-				var from = new EmailAddress(model.Email);
-				var subject = model.Name + "'s registration information";
-				var to = new EmailAddress(CoreAppSettings.MailTo);
-				var plainTextContent = "";
-				var htmlContent = "<p> Name: " + model.Name + "</p>";
-				htmlContent = htmlContent + "<p> Email: " + model.Email + "</p>";
-				htmlContent = htmlContent + "<p> StudentId: " + model.StudentId+ "</p>";
-				htmlContent = htmlContent + "<p> CourseId: " + model.CourseId + "</p>";
-				htmlContent = htmlContent + "<p> Section: " + model.Section + "</p>";
-				htmlContent = htmlContent + "<p> Semester: " + model.Semester + "</p>";
-				var message = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-				var response = client.SendEmailAsync(message);
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-				//Log.Error("Error Sending Contact Form email.", ex);
-			}
-		}
+            return View(model);
+        }
+
+        public ActionResult Thanks()
+        {
+            return View();
+        }
+        private void SendMail(Student model, string key)
+        {
+            try
+            {
+                var apikey = key;
+                var client = new SendGridClient(apikey);
+                var from = new EmailAddress(model.Email);
+                var subject = model.Name + "'s registration information";
+                var to = new EmailAddress(CoreAppSettings.MailTo);
+                var plainTextContent = "";
+                var htmlContent = "<p> Name: " + model.Name + "</p>";
+                htmlContent = htmlContent + "<p> Email: " + model.Email + "</p>";
+                htmlContent = htmlContent + "<p> StudentId: " + model.StudentId + "</p>";
+                htmlContent = htmlContent + "<p> CourseId: " + model.CourseId + "</p>";
+                htmlContent = htmlContent + "<p> Section: " + model.Section + "</p>";
+                htmlContent = htmlContent + "<p> Semester: " + model.Semester + "</p>";
+                var message = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                var response = client.SendEmailAsync(message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Log.Error("Error Sending Contact Form email.", ex);
+            }
+        }
 
 
-	}
+    }
 }
