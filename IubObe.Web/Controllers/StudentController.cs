@@ -63,6 +63,19 @@ namespace IubObe.Web.Controllers
             return View(model);
         }
 
+        public ActionResult StudentDetails(string uniqueIdentifier)
+        {
+            if (string.IsNullOrEmpty(uniqueIdentifier))
+                return HttpNotFound();
+
+           
+            var result = db.Students.SingleOrDefault(c => c.StudentId.Equals(uniqueIdentifier));
+
+            
+            return View("StudentDetails", result);
+
+        }
+
         public ActionResult Thanks()
         {
             return View();

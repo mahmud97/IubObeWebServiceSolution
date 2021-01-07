@@ -1,0 +1,29 @@
+﻿@model IubObe.Web.Models.Student
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dtl {
+        margin-bottom: 50px;
+        margin-left: 450px;
+    }
+
+    .fontstyle {
+        font-weight: bold;
+    }
+</style>
+<h2 style="margin-top:50px;margin-left:450px;" class="fontstyle">Details</h2>
+<hr>
+
+<div class="dtl fontstyle">
+
+    <p>StudentId : @Model.StudentId</p>
+    <p>Name : @Model.Name</p>
+    <p>Email : @Model.Email</p>
+    <p>CourseId : @Model.CourseId</p>
+    <p>Semester: @Model.Semester</p>
+    <p>Section :@Model.Section</p>
+    
+</div>

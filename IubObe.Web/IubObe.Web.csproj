@@ -150,6 +150,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\FacultyLoginVM.cs" />
     <Compile Include="ViewModels\StudentRegistrationVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +428,8 @@
     <Content Include="Views\Student\StudentRegistration.cshtml" />
     <Content Include="Views\Student\Thanks.cshtml" />
     <Content Include="Views\Faculty\StudentList.cshtml" />
+    <Content Include="Views\Faculty\FacultyLogin.cshtml" />
+    <Content Include="Views\Student\StudentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
