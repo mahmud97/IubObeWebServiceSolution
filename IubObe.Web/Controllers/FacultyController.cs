@@ -1,6 +1,8 @@
 ﻿using IubObe.Web.DB;
+using IubObe.Web.Models;
 using IubObe.Web.ViewModels;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,7 @@ namespace IubObe.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult FacultyLogin(FacultyLoginVM model, string button)
+        public ActionResult FacultyLogin(Faculty model, string button)
         {
 
 
@@ -42,23 +44,52 @@ namespace IubObe.Web.Controllers
                 return View();
 
             }
-
-            var facultyExist = FacultyList.Where(u => u.Equals(model.Email)).FirstOrDefault();
-            if (facultyExist == null)
+            
+            var userExist = db.Faculties.Where(u => u.Email.Equals(model.Email)).FirstOrDefault();
+            if (userExist == null)
+                return HttpNotFound("Email does not found in the database");
+            var check = userExist.Email.Equals(model.Email) && userExist.Password.Equals(model.Password);
+            if (!check)
             {
-                ModelState.AddModelError("error", "This is not a faculty email address");
-                return View();
+                ModelState.AddModelError("error", "email and password do not match");
+                return View("Login");
+            }
+            if (userExist != null && check)
+            {
+
+
+            }
+            return RedirectToAction("PloView");
+
+            //var facultyExist = FacultyList.Where(u => u.Equals(model.Email)).FirstOrDefault();
+            //if (facultyExist == null)
+            //{
+            //    ModelState.AddModelError("error", "This is not a faculty email address");
+            //    return View();
 
                
-            }
-            return RedirectToAction("StudentList");
+            //}
+            //return RedirectToAction("PloView");
 
         }
-
-        public ActionResult StudentList()
+        public ActionResult PloView()
         {
-            //var studentList = db.Students.ToList();
-            return View(db.Students.ToList());
+            List<DataPoint> dataPoints = new List<DataPoint>();
+
+            dataPoints.Add(new DataPoint("PO2", 43));
+            dataPoints.Add(new DataPoint("PO3", 46));
+            dataPoints.Add(new DataPoint("PO4", 31));
+            dataPoints.Add(new DataPoint("PO6", 56));
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+
+            return View();
         }
+
+        //public ActionResult StudentList()
+        //{
+        //    //var studentList = db.Students.ToList();
+        //    return View(db.Students.ToList());
+        //}
     }
 }

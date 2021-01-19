@@ -12,6 +12,8 @@ namespace IubObe.Web.DB
     {
 
         public DbSet<Student> Students { get; set; }
-        
+        public DbSet<Faculty> Faculties { get; set; }
+
+
     }
 }

@@ -9,10 +9,10 @@ namespace IubObe.Web.Controllers
     public class PloController : Controller
     {
         // GET: Plo
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
         List<string> Pos = new List<string>()
         {
             "PO2",
@@ -29,16 +29,16 @@ namespace IubObe.Web.Controllers
             56,
         };
 
-        public ActionResult PloChart()
-        {
-            return View();
-        }
+        //public ActionResult PloChart()
+        //{
+        //    return View();
+        //}
 
-        [HttpGet]
-        public JsonResult GetChartData()
-        {
-            var model = Pos.ToList();
-            return Json(model.ToArray(), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public JsonResult GetChartData()
+        //{
+        //    var model = Pos.ToList();
+        //    return Json(model.ToArray(), JsonRequestBehavior.AllowGet);
+        //}
     }
 }
