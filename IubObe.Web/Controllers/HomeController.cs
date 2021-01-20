@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IubObe.Web.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,8 @@ namespace IubObe.Web.Controllers
         
         public ActionResult Index()
         {
+            //var rx = new ReadExcel();
+            //rx.readDataFromExcel();
             return View();
         }
 

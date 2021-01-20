@@ -59,7 +59,7 @@ namespace IubObe.Web.Controllers
 
 
             }
-            return RedirectToAction("PloView");
+            return RedirectToAction("Results");
 
             //var facultyExist = FacultyList.Where(u => u.Equals(model.Email)).FirstOrDefault();
             //if (facultyExist == null)
@@ -72,7 +72,14 @@ namespace IubObe.Web.Controllers
             //return RedirectToAction("PloView");
 
         }
-        public ActionResult PloView()
+        
+        public ActionResult Results()
+        {
+            return View();
+        }
+       
+
+        public void readData()
         {
             List<DataPoint> dataPoints = new List<DataPoint>();
 
@@ -83,8 +90,51 @@ namespace IubObe.Web.Controllers
 
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
+        }
+        public ActionResult PAV()
+        {
+
+            readData();
             return View();
         }
+        public ActionResult SPV()
+        {
+            return View();
+        }
+
+        public ActionResult CPV()
+        {
+            List<DataPoint> dataPoints1 = new List<DataPoint>();
+            List<DataPoint> dataPoints2 = new List<DataPoint>();
+            List<DataPoint> dataPoints3 = new List<DataPoint>();
+
+            dataPoints1.Add(new DataPoint("Jan", 72));
+            dataPoints1.Add(new DataPoint("Feb", 67));
+            dataPoints1.Add(new DataPoint("Mar", 55));
+            dataPoints1.Add(new DataPoint("Apr", 42));
+            dataPoints1.Add(new DataPoint("May", 40));
+            dataPoints1.Add(new DataPoint("Jun", 35));
+
+            dataPoints2.Add(new DataPoint("Jan", 48));
+            dataPoints2.Add(new DataPoint("Feb", 56));
+            dataPoints2.Add(new DataPoint("Mar", 50));
+            dataPoints2.Add(new DataPoint("Apr", 47));
+            dataPoints2.Add(new DataPoint("May", 65));
+            dataPoints2.Add(new DataPoint("Jun", 69));
+
+            dataPoints3.Add(new DataPoint("Jan", 38));
+            dataPoints3.Add(new DataPoint("Feb", 46));
+            dataPoints3.Add(new DataPoint("Mar", 55));
+            dataPoints3.Add(new DataPoint("Apr", 70));
+            dataPoints3.Add(new DataPoint("May", 77));
+            dataPoints3.Add(new DataPoint("Jun", 91));
+
+            ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
+            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
+            ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+            return View();
+        }
+
 
         //public ActionResult StudentList()
         //{
