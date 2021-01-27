@@ -99,39 +99,71 @@ namespace IubObe.Web.Controllers
         }
         public ActionResult SPV()
         {
-            return View();
-        }
-
-        public ActionResult CPV()
-        {
             List<DataPoint> dataPoints1 = new List<DataPoint>();
             List<DataPoint> dataPoints2 = new List<DataPoint>();
             List<DataPoint> dataPoints3 = new List<DataPoint>();
 
-            dataPoints1.Add(new DataPoint("Jan", 72));
-            dataPoints1.Add(new DataPoint("Feb", 67));
-            dataPoints1.Add(new DataPoint("Mar", 55));
-            dataPoints1.Add(new DataPoint("Apr", 42));
-            dataPoints1.Add(new DataPoint("May", 40));
-            dataPoints1.Add(new DataPoint("Jun", 35));
+            dataPoints1.Add(new DataPoint("SEMESTER1", 5));
+            dataPoints1.Add(new DataPoint("SEMESTER2", 6));
+            dataPoints1.Add(new DataPoint("SEMESTER3", 7));
+            dataPoints1.Add(new DataPoint("SEMESTER4", 4));
+            dataPoints1.Add(new DataPoint("SEMESTER5", 4));
+            dataPoints1.Add(new DataPoint("SEMESTER6", 5));
 
-            dataPoints2.Add(new DataPoint("Jan", 48));
-            dataPoints2.Add(new DataPoint("Feb", 56));
-            dataPoints2.Add(new DataPoint("Mar", 50));
-            dataPoints2.Add(new DataPoint("Apr", 47));
-            dataPoints2.Add(new DataPoint("May", 65));
-            dataPoints2.Add(new DataPoint("Jun", 69));
+            dataPoints2.Add(new DataPoint("SEMESTER1", 4));
+            dataPoints2.Add(new DataPoint("SEMESTER2", 5));
+            dataPoints2.Add(new DataPoint("SEMESTER3", 4));
+            dataPoints2.Add(new DataPoint("SEMESTER4", 4));
+            dataPoints2.Add(new DataPoint("SEMESTER5", 3));
+            dataPoints2.Add(new DataPoint("SEMESTER6", 5));
 
-            dataPoints3.Add(new DataPoint("Jan", 38));
-            dataPoints3.Add(new DataPoint("Feb", 46));
-            dataPoints3.Add(new DataPoint("Mar", 55));
-            dataPoints3.Add(new DataPoint("Apr", 70));
-            dataPoints3.Add(new DataPoint("May", 77));
-            dataPoints3.Add(new DataPoint("Jun", 91));
+            //dataPoints3.Add(new DataPoint("SEMESTER1", 38));
+            //dataPoints3.Add(new DataPoint("SEMESTER2", 46));
+            //dataPoints3.Add(new DataPoint("SEMESTER3", 55));
+            //dataPoints3.Add(new DataPoint("SEMESTER4", 70));
+            //dataPoints3.Add(new DataPoint("SEMESTER5", 77));
+            //dataPoints3.Add(new DataPoint("SEMESTER6", 91));
 
             ViewBag.DataPoints1 = JsonConvert.SerializeObject(dataPoints1);
             ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
             ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
+            return View();
+
+
+
+           
+        }
+
+        public ActionResult CPV()
+        {
+            List<DataPoint> dataPoints4 = new List<DataPoint>();
+            List<DataPoint> dataPoints5 = new List<DataPoint>();
+            List<DataPoint> dataPoints6 = new List<DataPoint>();
+
+            dataPoints4.Add(new DataPoint("CSE101", 5));
+            dataPoints4.Add(new DataPoint("CSE104", 6));
+            dataPoints4.Add(new DataPoint("CSE201", 7));
+            dataPoints4.Add(new DataPoint("CSE203", 4));
+            dataPoints4.Add(new DataPoint("CSE204", 4));
+            dataPoints4.Add(new DataPoint("CSE210", 5));
+
+            dataPoints5.Add(new DataPoint("CSE101", 4));
+            dataPoints5.Add(new DataPoint("CSE104", 5));
+            dataPoints5.Add(new DataPoint("CSE201", 4));
+            dataPoints5.Add(new DataPoint("CSE203", 4));
+            dataPoints5.Add(new DataPoint("CSE204", 3));
+            dataPoints5.Add(new DataPoint("CSE210", 5));
+
+            //dataPoints3.Add(new DataPoint("SEMESTER1", 38));
+            //dataPoints3.Add(new DataPoint("SEMESTER2", 46));
+            //dataPoints3.Add(new DataPoint("SEMESTER3", 55));
+            //dataPoints3.Add(new DataPoint("SEMESTER4", 70));
+            //dataPoints3.Add(new DataPoint("SEMESTER5", 77));
+            //dataPoints3.Add(new DataPoint("SEMESTER6", 91));
+
+            ViewBag.DataPoints4 = JsonConvert.SerializeObject(dataPoints4);
+            ViewBag.DataPoints5 = JsonConvert.SerializeObject(dataPoints5);
+            //ViewBag.DataPoints3 = JsonConvert.SerializeObject(dataPoints3);
             return View();
         }
 
