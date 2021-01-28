@@ -205,8 +205,16 @@
       <DependentUpon>202101170610517_addfacultytable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\CO.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\Facult.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\ILoggingEntity.cs" />
+    <Compile Include="Models\PLO.cs" />
+    <Compile Include="Models\Program.cs" />
+    <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ReadExcel.cs" />
