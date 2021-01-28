@@ -23,6 +23,7 @@ namespace IubObe.Web.Models
         public string CourseId { get; set; }
         [ForeignKey("CourseId")]
         public Course Course { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
 
     }
 }

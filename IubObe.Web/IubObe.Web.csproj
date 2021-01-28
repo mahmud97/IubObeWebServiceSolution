@@ -204,16 +204,23 @@
     <Compile Include="Migrations\202101170610517_addfacultytable.designer.cs">
       <DependentUpon>202101170610517_addfacultytable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101280129355_TablesAdded.cs" />
+    <Compile Include="Migrations\202101280129355_TablesAdded.designer.cs">
+      <DependentUpon>202101280129355_TablesAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\CO.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\Enroll.cs" />
     <Compile Include="Models\Facult.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\ILoggingEntity.cs" />
     <Compile Include="Models\PLO.cs" />
     <Compile Include="Models\Program.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -532,6 +539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101170610517_addfacultytable.resx">
       <DependentUpon>202101170610517_addfacultytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101280129355_TablesAdded.resx">
+      <DependentUpon>202101280129355_TablesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

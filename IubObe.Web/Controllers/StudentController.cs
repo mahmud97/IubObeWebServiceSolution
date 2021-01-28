@@ -38,12 +38,12 @@ namespace IubObe.Web.Controllers
 
             }
             var emailExist = db.Students.Where(s => s.Email == model.Email).FirstOrDefault();
-            var studentExist = db.Students.Where(s => s.StudentId == model.StudentId).FirstOrDefault();
-            if (studentExist != null)
-            {
-                ModelState.AddModelError("error1", "This Student Id already exists");
-                return View();
-            }
+            //var studentExist = db.Students.Where(s => s.StudentId == model.StudentId).FirstOrDefault();
+            //if (studentExist != null)
+            //{
+            //    ModelState.AddModelError("error1", "This Student Id already exists");
+            //    return View();
+            //}
 
             if (emailExist != null)
             {
@@ -69,10 +69,10 @@ namespace IubObe.Web.Controllers
                 return HttpNotFound();
 
            
-            var result = db.Students.SingleOrDefault(c => c.StudentId.Equals(uniqueIdentifier));
+           // var result = db.Students.SingleOrDefault(c => c.StudentId.Equals(uniqueIdentifier));
 
             
-            return View("StudentDetails", result);
+            return View("StudentDetails");
 
         }
 
@@ -92,10 +92,10 @@ namespace IubObe.Web.Controllers
                 var plainTextContent = "";
                 var htmlContent = "<p> Name: " + model.Name + "</p>";
                 htmlContent = htmlContent + "<p> Email: " + model.Email + "</p>";
-                htmlContent = htmlContent + "<p> StudentId: " + model.StudentId + "</p>";
-                htmlContent = htmlContent + "<p> CourseId: " + model.CourseId + "</p>";
-                htmlContent = htmlContent + "<p> Section: " + model.Section + "</p>";
-                htmlContent = htmlContent + "<p> Semester: " + model.Semester + "</p>";
+               // htmlContent = htmlContent + "<p> StudentId: " + model.StudentId + "</p>";
+               // htmlContent = htmlContent + "<p> CourseId: " + model.CourseId + "</p>";
+              //  htmlContent = htmlContent + "<p> Section: " + model.Section + "</p>";
+              //  htmlContent = htmlContent + "<p> Semester: " + model.Semester + "</p>";
                 var message = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
                 var response = client.SendEmailAsync(message);
             }

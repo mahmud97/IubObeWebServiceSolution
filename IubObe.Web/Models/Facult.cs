@@ -13,6 +13,9 @@ namespace IubObe.Web.Models
         public string Email { get; set; }
 
         public virtual ICollection<Section> Sections { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
+
 
     }
 }

@@ -20,5 +20,7 @@ namespace IubObe.Web.Models
         public Program Program { get; set; }
 
         public virtual ICollection<CO> COs { get; set; }
+        public virtual ICollection<Section> Sections { get; set; }
+
     }
 }
